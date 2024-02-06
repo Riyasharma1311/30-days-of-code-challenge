@@ -1,0 +1,16 @@
+class Solution {
+  public:
+    long long sumMatrix(long long n, long long q) {
+   
+        long long count=0;
+
+if(q>2*n){
+    return 0;
+}else if(q<=n){
+    count=q-1;
+}else{
+    count=2*n -q +1;
+}
+        return count;
+    }
+};
