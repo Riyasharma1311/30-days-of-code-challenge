@@ -1,0 +1,28 @@
+Node* sortedInsert(Node * head, int x)
+{
+	// Code here
+struct Node* curr=head;
+if(head==NULL){
+    head=getNode(x);
+}else if((head->data)>=x){
+    Node *newNode=getNode(x);
+    newNode->next=head;
+    newNode->next->prev=newNode;
+    head=newNode;
+}else{
+    while(curr->next!=NULL && curr->next->data<x){
+        curr=curr->next;
+    }
+    
+    Node* newNode=getNode(x);
+    newNode->next=curr->next;
+    if(curr->next!=NULL){
+        newNode->next->prev=newNode;
+    }
+    curr->next=newNode;
+    newNode->prev=curr;
+}
+ return head;	
+
+    	
+};
