@@ -1,0 +1,18 @@
+void PreOrderTraversal(Node* root)
+{
+    if(root == NULL)
+    {
+        return ;
+    }
+ 
+    cout<<root->data<<" ";
+    PreOrderTraversal(root->left);
+    PreOrderTraversal(root->right);
+}
+    
+vector <int> preorder(Node* root)
+{
+  vector<int>result;
+  PreOrderTraversal(root);
+  return result;
+}
