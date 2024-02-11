@@ -1,0 +1,15 @@
+void postOrderTraversal(Node* root){
+    if(root==NULL){
+        return ;
+    }
+    postOrderTraversal(root->left);
+      postOrderTraversal(root->right);
+      cout<<root->data<<" ";
+}
+vector <int> postOrder(Node* root)
+{
+  // Your code here
+  vector<int> res;
+    postOrderTraversal(root);
+    return res;
+}
