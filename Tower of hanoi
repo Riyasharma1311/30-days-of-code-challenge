@@ -1,0 +1,15 @@
+ long long result=0;
+
+    // avoid space at the starting of the string in "move disk....."
+    long long toh(int N, int from, int to, int aux) {
+        // Your code here
+     
+        if(N==0){
+            return result;
+        }
+        toh(N-1,from,aux,to);
+        cout<<"move disk "<<N<<" from rod "<<from<<" to rod "<<to<<endl;
+        result++;
+        toh(N-1,aux,to,from);
+        return result;
+    }
