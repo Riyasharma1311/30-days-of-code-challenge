@@ -1,0 +1,16 @@
+lass Solution {
+public:
+    vector<int> inorderTraversal(TreeNode* root) {
+        vector<int> result;
+        inOrder(root,result);
+        return result;
+    }
+
+    void inOrder(TreeNode* root,vector<int>& result){
+        if(root!=nullptr){
+            inOrder(root->left,result);
+            result.push_back(root->val);
+            inOrder(root->right,result);
+        }
+    }
+};
