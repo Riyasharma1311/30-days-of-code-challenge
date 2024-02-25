@@ -1,0 +1,39 @@
+ Node* checkLoop(Node* head){
+        Node* fast=head;
+         Node* slow=head;
+         while(fast->next&&fast->next->next ){
+             slow=slow->next;
+             fast=fast->next->next;
+             if(fast==slow){
+                 return slow;
+             }
+         }
+         return NULL;
+    }
+    
+    Node* startOfLoop(Node* head){
+        Node* fast=checkLoop(head);
+        if(fast==NULL){
+            return NULL;
+        }
+        Node* slow=head;
+        while(slow!=fast){
+            slow=slow->next;
+            fast=fast->next;
+        }
+        return slow;
+    }
+    void removeLoop(Node* head)
+    {
+        // code here
+        // just remove the loop without losing any nodes
+        if(head==NULL) return;
+        Node* intersection=startOfLoop(head);
+        if(intersection==NULL)return;
+        Node* temp=intersection;
+        while(temp->next!=intersection){
+            temp=temp->next;
+        }
+        temp->next=NULL;
+    }
+};
