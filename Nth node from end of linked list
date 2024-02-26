@@ -1,0 +1,37 @@
+ Node* reverse(Node* head){
+        Node* curr=head;
+        Node* prev=NULL;
+        Node* next=NULL;
+        while(curr!=NULL){
+            next=curr->next;
+            curr->next=prev;
+            prev=curr;
+            curr=next;
+        }
+        return prev;
+    }
+    int len(Node* head){
+        int length=0;
+        Node* temp=head;
+        while(temp!=NULL){
+            temp=temp->next;
+            length++;
+        }
+        return length;
+    }
+    int getNthFromLast(Node *head, int n)
+    {
+             int count =1;
+        int size=len(head);
+        if(n>size){
+            return -1;
+        }
+           // Your code here
+           Node *temp=reverse(head);
+         
+           while(count<n){
+               temp=temp->next;
+               count++;
+           }
+           return temp->data;
+    }
