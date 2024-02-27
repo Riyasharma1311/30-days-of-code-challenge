@@ -1,0 +1,18 @@
+ struct node *reverseIt (struct node *head, int k)
+    { 
+        node* curr = head;
+        node* prev = NULL;
+        node* forward = NULL;
+        int count=0;
+        while(curr && count<k) {
+            forward = curr->next;
+            curr->next = prev;
+            prev = curr;
+            curr = forward;
+            count++;
+        }
+        if(forward!=NULL) {
+            head->next = reverseIt(forward,k);
+        }
+        return prev;
+    }
