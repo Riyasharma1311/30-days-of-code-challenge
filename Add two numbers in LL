@@ -1,0 +1,59 @@
+struct Node* reverse(struct Node* head){
+        Node* prev=NULL;
+        Node* next=NULL;
+        Node* curr=head;
+        while(curr!=NULL){
+            next=curr->next;
+            curr->next=prev;
+            prev=curr;
+            curr=next;
+        }
+        return prev;
+    }
+   struct Node* add(struct Node* first, struct Node* second){
+       Node* ans=new Node(0);
+       Node* temp=ans;
+       int carry=0, sum=0;
+       while(first!=NULL && second!=NULL){
+           sum=carry+ first->data +second->data;
+           int digit=sum%10;
+           carry=sum/10;
+           ans->next=new Node(digit);
+           ans=ans->next;
+           first=first->next;
+           second=second->next;
+       }
+       
+       while(first!=NULL){
+            sum=carry+ first->data;
+           int digit=sum%10;
+           carry=sum/10;
+           ans->next=new Node(digit);
+           ans=ans->next;
+           first=first->next;
+       }
+       while(second!=NULL){
+            sum=carry+ second->data;
+           int digit=sum%10;
+           carry=sum/10;
+           ans->next=new Node(digit);
+           ans=ans->next;
+           second=second->next;
+       }
+      if(carry!=0){
+          ans->next=new Node(carry);
+           ans=ans->next;
+      }
+      return temp->next;
+       }
+    struct Node* addTwoLists(struct Node* first, struct Node* second)
+    {
+        // code here
+     first=reverse(first);
+     second=reverse(second);
+     
+     Node* ans=add(first,second);
+     
+     ans=reverse(ans);
+     return ans;
+    }
