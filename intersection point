@@ -1,0 +1,39 @@
+int getSize(Node * head){
+  
+    Node* temp=head;  
+    int count=0;  
+    while(temp!=NULL){
+         count++; 
+         temp=temp->next;
+    }    
+    return count;   
+} 
+//Function to find intersection point in Y shaped Linked Lists.
+int intersectPoint(Node* head1, Node* head2)
+{
+    // Your Code Here
+    int size1=getSize(head1);
+    int size2=getSize(head2);
+    Node* temp1=head1;
+     Node* temp2=head2;
+     if(size1>=size2){
+         int n=size1-size2;
+         while(n--){
+             temp1=temp1->next;
+         }
+     }else {
+         int n=size2-size1;
+         while(n--){
+             temp2=temp2->next;
+         }
+     }
+     
+     while(temp1!=NULL && temp2!=NULL){
+         if(temp1==temp2){
+             return temp1->data;
+         }
+         temp1=temp1->next;
+         temp2=temp2->next;
+     }
+     return -1;
+}
