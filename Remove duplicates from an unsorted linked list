@@ -1,0 +1,21 @@
+ Node * removeDuplicates( Node *head) 
+    {
+     // your code goes here
+     if(head->next==NULL){
+         return head;
+     }
+     
+     map<int,bool> mp;
+     Node* curr=head;
+     Node* prev=NULL;
+     while(curr!=NULL){
+         if(mp[curr->data]==true){
+             prev->next=curr->next;
+         }else{
+             prev=curr;
+             mp[curr->data]=true;
+         }
+         curr=curr->next;
+     }
+     return head;
+    }
