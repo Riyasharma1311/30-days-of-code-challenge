@@ -1,0 +1,10 @@
+    void swapElements(int arr[], int n){
+        
+        // Your code here
+     int i=0,j=2;
+     while(j<n){
+         swap(arr[i],arr[j]);
+         i++,j++;
+     }
+        
+    }
