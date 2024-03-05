@@ -1,0 +1,21 @@
+void dfs(Node* root, int& h,int& mh, vector<int> &ans){
+    if(!root) return;
+    h++;
+    if(h>mh){
+        mh=h;
+        ans.push_back(root->data);
+    }
+    dfs(root->left,h,mh,ans);
+     dfs(root->right,h,mh,ans);
+     h--;
+}
+//Function to return a list containing elements of left view of the binary tree.
+vector<int> leftView(Node *root)
+{
+   // Your code here
+   vector<int> arr;
+   if(!root) return arr;
+   int h=0,mh=0;
+   dfs(root,h,mh,arr);
+   return arr;
+}
